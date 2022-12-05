@@ -1,39 +1,73 @@
 import React from 'react';
 // import shortid from 'shortid';
-import { Phonebook } from 'components/Phonebook/Phonebook';
 
-import { Contacts } from './Contacts/Contacts';
-import { Filter } from './Filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { selectContacts, selectIsLoading, selectError } from 'redax/selectors';
-import { fetchContacts } from 'redax/operation';
+
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './layout';
+// import Login from './Pages/Login';
+// import Register from './Pages/Register';
+// import Home from './Pages/Home';
+
+// import PhonebookPage from './Pages/PhonebookPage';
+
+import { refreshUser } from 'redax/auth/authOperations';
+import { selectisRefreshing } from 'redax/auth/authSelectors';
+
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { lazy } from 'react';
 
 // import { useState, useEffect } from 'react';
+
+const Home = lazy(() => import('./Pages/Home'));
+const Login = lazy(() => import('./Pages/Login'));
+const Register = lazy(() => import('./Pages/Register'));
+const PhonebookPage = lazy(() => import('./Pages/PhonebookPage'));
 export const App = () => {
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const dispatch = useDispatch(selectError);
+  const dispatch = useDispatch();
+
+  const isRefreshing = useSelector(selectisRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <div
-      style={{
-        width: 720,
-        margin: 'auto',
-        fontSize: 30,
-      }}
-    >
-      <h1>Phonebook</h1>
-      <Phonebook></Phonebook>
-      {contacts.length > 0 && <h2>Contacts</h2>}
-      {isLoading && !error && <b>Request in progress...</b>}
-      {contacts.length > 0 && <Filter />}
-      {contacts.length > 0 && <Contacts />}
-    </div>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/phonebook" component={Login} />
+          }
+        />
+        {/* <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/phonebook" componenet={<Login />} />
+          }
+        /> */}
+        {/* <Route path="/login" element={<Login />} /> */}
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/phonebook" component={Register} />
+          }
+        />
+        {/* <Route path="/register" element={<Register />} /> */}
+        <Route
+          path="/phonebook"
+          element={
+            <PrivateRoute redirectTo="/login" component={PhonebookPage} />
+          }
+        />
+        {/* <Route path="/phonebook" element={<PhonebookPage />} /> */}
+      </Route>
+    </Routes>
   );
 };
