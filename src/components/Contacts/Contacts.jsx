@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ContactsList, ContactsItem, ContactsButton } from './Contacts.styled';
+import { ContactsList, ContactsItem } from './Contacts.styled';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { deleteContact } from '../../redax/operation';

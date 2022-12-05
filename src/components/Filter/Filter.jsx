@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FilterLabel, FilterInput } from './Filer.styles';
+import { FilterLabel } from './Filer.styles';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redax/filterContactSlice';
