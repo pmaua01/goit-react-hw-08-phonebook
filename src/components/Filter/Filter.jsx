@@ -5,6 +5,8 @@ import { FilterLabel, FilterInput } from './Filer.styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilter } from 'redax/filterContactSlice';
 
+import TextField from '@mui/material/TextField';
+
 export const Filter = () => {
   const filtersValue = useSelector(state => state.filters);
   const dispatch = useDispatch();
@@ -14,12 +16,13 @@ export const Filter = () => {
 
   return (
     <FilterLabel>
-      Find contacts by Name
-      <FilterInput
+      <TextField
+        label="Find contacts by Name"
+        variant="outlined"
         type="text"
         value={filtersValue}
         onChange={onHandleChange}
-      ></FilterInput>
+      ></TextField>
     </FilterLabel>
   );
 };

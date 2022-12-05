@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const FormPhoneBook = styled.form`
-  border: 1px solid black;
-  width: 400px;
-  padding-left: 10px;
+  // border: 1px solid black;
+  // width: 400px;
+  // padding-left: 10px;
 `;
 
 export const FormLabel = styled.label`

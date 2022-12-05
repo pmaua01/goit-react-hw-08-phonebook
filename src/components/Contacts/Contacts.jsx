@@ -3,12 +3,15 @@ import { ContactsList, ContactsItem, ContactsButton } from './Contacts.styled';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { deleteContact } from '../../redax/operation';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import {
   // selectContacts,
   // selectFilter,
   selectVisibleContacts,
 } from '../../redax/selectors';
+
+import Button from '@mui/material/Button';
 
 export const Contacts = () => {
   // const contacts = useSelector(selectContacts);
@@ -32,13 +35,17 @@ export const Contacts = () => {
         return (
           <ContactsItem key={contact.id}>
             {contact.name}:{contact.number}
-            <ContactsButton
+            <Button
+              color="error"
+              size="small"
+              startIcon={<DeleteIcon />}
+              variant="contained"
               id={contact.id}
               type="button"
               onClick={() => handeleDelete(contact.id)}
             >
               Delete
-            </ContactsButton>
+            </Button>
           </ContactsItem>
         );
       })}

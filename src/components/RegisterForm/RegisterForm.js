@@ -1,5 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redax/auth/authOperations';
+import css from '../RegisterForm/Register.module.css';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
@@ -15,20 +18,37 @@ export const RegisterForm = () => {
     );
   };
   return (
-    <form autoComplete="off" onSubmit={onHandleClick}>
-      <label>
-        Username
-        <input type="text" name="name" />
+    <form className={css.form} autoComplete="off" onSubmit={onHandleClick}>
+      <label className={css.label}>
+        <TextField
+          id="filled-basic"
+          label="Username"
+          variant="filled"
+          type="text"
+          name="name"
+        />
       </label>
-      <label>
-        Email
-        <input type="email" name="email" />
+      <label className={css.label}>
+        <TextField
+          id="filled-basic"
+          label="Email"
+          variant="filled"
+          type="email"
+          name="email"
+        />
       </label>
-      <label>
-        Password
-        <input type="password" name="password" />
+      <label className={css.label}>
+        <TextField
+          id="filled-basic"
+          label="Password"
+          variant="filled"
+          type="password"
+          name="password"
+        />
       </label>
-      <button type="submit">Register</button>
+      <Button variant="contained" type="submit">
+        Register
+      </Button>
     </form>
   );
 };

@@ -3,9 +3,11 @@ import { useState } from 'react';
 import {
   FormPhoneBook,
   FormLabel,
-  FormInput,
-  FormButton,
+  // FormInput,
+  // FormButton,
 } from './Phonebook.styled';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 import { useSelector, useDispatch } from 'react-redux';
 // import { addContacts } from 'redax/contactSlice';
@@ -54,8 +56,9 @@ export const Phonebook = () => {
   return (
     <FormPhoneBook onSubmit={onSubmit}>
       <FormLabel>
-        Name:
-        <FormInput
+        <TextField
+          label="Name"
+          variant="outlined"
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -66,8 +69,9 @@ export const Phonebook = () => {
         />
       </FormLabel>
       <FormLabel>
-        Number:
-        <FormInput
+        <TextField
+          label="Number"
+          variant="outlined"
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -77,7 +81,9 @@ export const Phonebook = () => {
           onChange={onChangeInput}
         />
       </FormLabel>
-      <FormButton type="submit">Add contact</FormButton>
+      <Button variant="contained" type="submit">
+        Add contact
+      </Button>
     </FormPhoneBook>
   );
 };
