@@ -8,7 +8,6 @@ import Button from '@mui/material/Button';
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  // console.log('UserMenu selectuser', user);
   const userName = user.name;
 
   const onHandleClick = e => {

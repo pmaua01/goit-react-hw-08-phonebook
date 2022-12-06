@@ -19,17 +19,10 @@ export const LoginForm = () => {
   return (
     <form className={css.wrapper} autoComplete="off" onSubmit={onHandleClick}>
       <label className={css.label}>
-        <TextField
-          id="filled-basic"
-          label="Email"
-          variant="filled"
-          type="email"
-          name="email"
-        />
+        <TextField label="Email" variant="filled" type="email" name="email" />
       </label>
       <label className={css.label}>
         <TextField
-          id="filled-basic"
           label="Password"
           variant="filled"
           type="password"

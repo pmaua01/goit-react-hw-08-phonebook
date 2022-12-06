@@ -3,9 +3,10 @@ import { selectisLoggedIn } from '../../redax/auth/authSelectors';
 import { useSelector } from 'react-redux';
 import css from '../Navigation/Navigation.module.css';
 import HomeIcon from '@mui/icons-material/Home';
+
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectisLoggedIn);
-  // console.log('isLoggedIn navigation', isLoggedIn);
+
   return (
     <nav>
       <NavLink

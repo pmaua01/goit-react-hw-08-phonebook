@@ -1,33 +1,17 @@
 import PropTypes from 'prop-types';
 import { ContactsList, ContactsItem } from './Contacts.styled';
 import { useSelector, useDispatch } from 'react-redux';
-
-import { deleteContact } from '../../redax/operation';
+import { deleteContact } from '../../redax/contacts/operation';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-import {
-  // selectContacts,
-  // selectFilter,
-  selectVisibleContacts,
-} from '../../redax/selectors';
-
+import { selectVisibleContacts } from '../../redax/contacts/selectors';
 import Button from '@mui/material/Button';
 
 export const Contacts = () => {
-  // const contacts = useSelector(selectContacts);
-  // const filter = useSelector(selectFilter);
-  // console.log('contacts:', contacts);
   const dispatch = useDispatch();
-
   const visible = useSelector(selectVisibleContacts);
-
   const handeleDelete = id => {
     dispatch(deleteContact(id));
   };
-
-  // const visibleContacts = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(filter.toLowerCase())
-  // );
 
   return (
     <ContactsList>

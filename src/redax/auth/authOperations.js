@@ -31,7 +31,6 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post('/users/login', userData);
       setAuthHeader(response.data.token);
-      // console.log('Response login', response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -59,7 +58,6 @@ export const refreshUser = createAsyncThunk(
       }
       setAuthHeader(token);
       const response = await axios.get('/users/current');
-      // console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue('error.message');

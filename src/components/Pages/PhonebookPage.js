@@ -1,10 +1,14 @@
-import { selectContacts, selectIsLoading, selectError } from 'redax/selectors';
+import {
+  selectContacts,
+  selectIsLoading,
+  selectError,
+} from 'redax/contacts/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { Phonebook } from 'components/Phonebook/Phonebook';
 import { Contacts } from 'components/Contacts/Contacts';
 import { Filter } from 'components/Filter/Filter';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redax/operation';
+import { fetchContacts } from 'redax/contacts/operation';
 
 export default function PhonebookPage() {
   const contacts = useSelector(selectContacts);

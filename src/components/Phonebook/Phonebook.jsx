@@ -1,19 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import {
-  FormPhoneBook,
-  FormLabel,
-  // FormInput,
-  // FormButton,
-} from './Phonebook.styled';
+import { FormPhoneBook, FormLabel } from './Phonebook.styled';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
 import { useSelector, useDispatch } from 'react-redux';
-// import { addContacts } from 'redax/contactSlice';
-import { selectContacts } from 'redax/selectors';
-
-import { addContact } from 'redax/operation';
+import { selectContacts } from 'redax/contacts/selectors';
+import { addContact } from 'redax/contacts/operation';
 
 export const Phonebook = () => {
   const contacts = useSelector(selectContacts);
@@ -39,7 +31,6 @@ export const Phonebook = () => {
   };
 
   const onSubmit = e => {
-    // const numberContact = { name, number };
     e.preventDefault();
     for (const element of contacts) {
       if (element.name.toLowerCase() === name.toLowerCase()) {
@@ -48,7 +39,6 @@ export const Phonebook = () => {
       }
     }
     dispatch(addContact({ name, number }));
-
     setName('');
     setNumber('');
   };

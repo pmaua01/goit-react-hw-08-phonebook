@@ -3,7 +3,7 @@ import React from 'react';
 import { FilterLabel } from './Filer.styles';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from 'redax/filterContactSlice';
+import { setFilter } from 'redax/contacts/filterContactSlice';
 
 import TextField from '@mui/material/TextField';
 

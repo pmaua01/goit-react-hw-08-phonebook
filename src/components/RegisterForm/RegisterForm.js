@@ -20,26 +20,13 @@ export const RegisterForm = () => {
   return (
     <form className={css.form} autoComplete="off" onSubmit={onHandleClick}>
       <label className={css.label}>
-        <TextField
-          id="filled-basic"
-          label="Username"
-          variant="filled"
-          type="text"
-          name="name"
-        />
+        <TextField label="Username" variant="filled" type="text" name="name" />
+      </label>
+      <label className={css.label}>
+        <TextField label="Email" variant="filled" type="email" name="email" />
       </label>
       <label className={css.label}>
         <TextField
-          id="filled-basic"
-          label="Email"
-          variant="filled"
-          type="email"
-          name="email"
-        />
-      </label>
-      <label className={css.label}>
-        <TextField
-          id="filled-basic"
           label="Password"
           variant="filled"
           type="password"
